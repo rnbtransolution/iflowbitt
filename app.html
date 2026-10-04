@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iFlowBitt — My Dashboard</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/dashboard.css">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
+</head>
+<body class="dp">
+<header class="dh">
+  <a class="dlogo" href="index.html"><span class="mark"><i data-i="btc"></i></span><span class="logo-txt">iFlowBitt<sup class="cp">©</sup></span></a>
+  <label class="dsearch hide" id="searchBox"><i data-i="search"></i><input id="q" placeholder="Search transactions"></label>
+  <div class="dhi hide" id="hiBox">Hi <span id="who"></span><span>!</span> <span class="av" id="av"></span></div>
+</header>
+
+
+<div id="auth" class="card auth">
+  <div class="tabs"><button class="btn on" id="tLogin">Login</button><button class="btn" id="tReg">Register</button></div>
+  <form id="form">
+    <div id="regOnly" class="hide">
+      <h4 class="fsec">Personal details</h4>
+      <div class="frow">
+        <div><label>Full name (as on ID)</label><input id="name" autocomplete="name"></div>
+        <div><label>Date of birth</label><input id="dob" type="date"></div>
+        <div><label>Nationality</label><input id="nat" list="countries" autocomplete="off"></div>
+        <div><label>Occupation</label><input id="occ"></div>
+      </div>
+      <h4 class="fsec">Contact</h4>
+      <div class="frow">
+        <div><label>Phone (with country code)</label><input id="phone" type="tel" placeholder="+66 81 234 5678" autocomplete="tel"></div>
+        <div><label>Country of residence</label><input id="country" list="countries" autocomplete="off"></div>
+        <div class="full"><label>Street address</label><input id="addr" autocomplete="street-address"></div>
+        <div><label>City / Province</label><input id="city"></div>
+        <div><label>Postal code</label><input id="zip"></div>
+      </div>
+      <h4 class="fsec">Identity verification</h4>
+      <div class="frow">
+        <div><label>ID type</label><select id="idt"><option>National ID</option><option>Passport</option><option>Driver's license</option></select></div>
+        <div><label>ID number</label><input id="idn"></div>
+      </div>
+      <h4 class="fsec">Payout wallet</h4>
+      <div class="frow">
+        <div><label>USDT network</label><select id="wnet"><option>TRC20</option><option>ERC20</option><option>BEP20</option></select></div>
+        <div><label>USDT wallet address</label><input id="wallet" autocomplete="off"></div>
+      </div>
+      <h4 class="fsec">Account</h4>
+      <label>Referral code (optional)</label><input id="ref">
+      <datalist id="countries"></datalist>
+    </div>
+    <label id="emailLbl">Email</label><input id="email" type="text" autocomplete="username" required>
+    <label>Password (min 6)</label><input id="pw" type="password" required minlength="6">
+    <label class="chk hide" id="agreeRow"><input type="checkbox" id="agree"><span>I am 18 or older, the details above are true, and I accept the Terms and understand that investing involves risk and returns are not guaranteed.</span></label>
+    <br><br><button class="btn" style="width:100%;justify-content:center" id="go">Login</button>
+    <div class="msg" id="authMsg"></div>
+  </form>
+</div>
+
+<div id="dash" class="dlayout hide">
+  <aside class="rail">
+    <div class="railgrp">
+      <button class="rb on" data-view="overview" title="Overview"><i data-i="home"></i></button>
+      <button class="rb" data-view="deposit" title="Deposit USDT"><i data-i="wallet"></i></button>
+      <button class="rb" data-view="history" title="History"><i data-i="chart"></i></button>
+    </div>
+    <button class="rb out" id="logout" title="Logout"><i data-i="logout"></i></button>
+  </aside>
+
+  <main class="dmain">
+    <!-- OVERVIEW -->
+    <section data-pane="overview">
+      <h1 class="dtitle">My Dashboard</h1>
+      <div class="pills" id="pills">
+        <button class="pill on" data-f="all">All</button><button data-f="deposit">Deposits</button><button data-f="payout">Payouts</button><button data-f="referral">Referrals</button>
+      </div>
+
+      <div class="dgrid">
+        <div class="dcol">
+          <div class="panel">
+            <div class="ph"><h3>Revenue Flow</h3><span class="va">Projected interest</span></div>
+            <div class="bars" id="bars"></div>
+          </div>
+
+          <div class="dgrid2">
+            <div class="panel">
+              <div class="ph"><h3>Allocation</h3><span class="va">By strategy</span></div>
+              <div class="donutwrap">
+                <div class="donut"><svg viewBox="0 0 200 200" id="donut"></svg><div class="dc"><b id="dTotal">$0</b><small>Total invested</small></div></div>
+                <ul class="legend" id="legend"></ul>
+              </div>
+            </div>
+            <div class="stack">
+              <div class="panel mini"><div class="ph"><h3>Interest paid</h3><span class="dots">···</span></div><b class="big" id="sPaid">$0</b><div class="mrow"><small>Since you joined</small><span class="badge g" id="rateBadge"></span></div></div>
+              <div class="panel mini"><div class="ph"><h3>Referral rewards</h3><span class="dots">···</span></div><b class="big" id="sRef">$0</b><div class="mrow"><small id="refCount">0 friends qualified</small><span class="badge v">5% of deposits</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dcol">
+          <div class="panel glass">
+            <div class="ph"><h3>My Account</h3><span class="va" id="nextD">Next payout</span></div>
+            <div class="cardstack">
+              <div class="cs c3"></div><div class="cs c2"></div>
+              <div class="cs c1">
+                <button class="plus" data-view="deposit" title="Deposit"><i data-i="plus"></i></button>
+                <small>Total Balance</small><b id="sInv">$0.00</b>
+              </div>
+              <div class="cardnum"><span id="cardCode"></span><small>Min deposit $100 · 1.5% – 2.5% / month</small></div>
+            </div>
+            <div class="ph tx"><h3>Transactions</h3><span class="va">Latest</span></div>
+            <ul class="txs" id="txs"></ul>
+            <div class="duo">
+              <div class="friend"><b>Add friends</b><small>Invite friends to join and earn 5% of their deposits.</small>
+                <div class="code" id="myCode"></div><button class="btn sm" id="copyRef"><i data-i="copy"></i> Copy link</button></div>
+              <div class="spend"><b>Upcoming</b><svg viewBox="0 0 200 80" preserveAspectRatio="none" id="wave"></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tvgrid" style="margin-top:20px">
+        <div class="tvbox" data-tv="mini|OANDA:XAUUSD"></div>
+        <div class="tvbox" data-tv="mini|KRAKEN:USDTUSD"></div>
+      </div>
+    </section>
+
+    <!-- DEPOSIT -->
+    <section data-pane="deposit" class="hide">
+      <h1 class="dtitle">Deposit USDT</h1>
+      <div class="panel">
+        <ol class="dsteps">
+          <li><span class="n">1</span><div><b>Buy USDT</b><small>Purchase USDT on any crypto exchange.</small></div></li>
+          <li><span class="n">2</span><div><b>Send to our address</b><small>Transfer USDT to the platform address below, using the same network you select.</small></div></li>
+          <li><span class="n">3</span><div><b>Submit your details</b><small>Enter the amount and the transaction hash (TXID) to confirm your deposit.</small></div></li>
+        </ol>
+        <p class="dnote"><i data-i="shield"></i> Minimum deposit: <b>$100 USDT</b>. Deposits are confirmed by an admin before interest starts.</p>
+        <label>Network</label>
+        <select id="net"><option>TRC20</option><option>ERC20</option><option>BEP20</option></select>
+        <label>Platform deposit address</label>
+        <div class="addr" id="addr"></div>
+        <label>Amount (USDT)</label><input id="amt" type="number" min="100" step="0.01" placeholder="100">
+        <label>Transaction hash (TXID)</label><input id="txid">
+        <div class="msg" id="preview"></div>
+        <br><button class="btn" id="dep">Submit deposit <i data-i="arrow"></i></button>
+        <div class="msg" id="depMsg"></div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section data-pane="history" class="hide">
+      <h1 class="dtitle">History</h1>
+      <div class="panel tablewrap"><div class="ph"><h3>My deposits</h3></div><table><thead><tr><th>Date</th><th>Network</th><th>Amount</th><th>TXID</th><th>Status</th></tr></thead><tbody id="depRows"></tbody></table></div>
+      <div class="panel tablewrap" style="margin-top:18px"><div class="ph"><h3>Payout schedule</h3></div><table><thead><tr><th>Payout date</th><th>Amount</th><th>Status</th></tr></thead><tbody id="payRows"></tbody></table></div>
+      <div class="panel tablewrap" style="margin-top:18px"><div class="ph"><h3>Referrals</h3></div><table><thead><tr><th>Friend</th><th>Status</th></tr></thead><tbody id="refRows"></tbody></table></div>
+    </section>
+  </main>
+</div>
+
+<div id="ticker" data-tv="ticker"></div>
+<script src="assets/config.js"></script>
+<script src="assets/icons.js"></script>
+<script src="assets/fx.js"></script>
+<script src="assets/tv.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

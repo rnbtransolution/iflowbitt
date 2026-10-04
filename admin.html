@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iFlowBitt — Admin</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html"><span class="mark"><i data-i="btc"></i></span><div class="logo-txt">iFlowBitt<sup class="cp">©</sup> <small style="color:var(--mute);font-size:.7rem">ADMIN</small></div></a>
+  <div class="links"><a id="logout" class="btn sm hide" href="#"><i data-i="logout"></i> Logout</a></div>
+</nav>
+
+<div class="wrap">
+
+  <div id="auth" class="card auth">
+    <h2><i data-i="shield"></i> Admin <span>login</span></h2>
+    <form id="form">
+      <label>Username</label><input id="user" autocomplete="username" required>
+      <label>Password</label><input id="pw" type="password" autocomplete="current-password" required>
+      <br><br><button class="btn gold" style="width:100%;justify-content:center">Login</button>
+      <div class="msg" id="authMsg"></div>
+    </form>
+  </div>
+
+  <div id="dash" class="hide">
+    <div class="stats">
+      <div class="stat"><b id="aMem">0</b><small>Members</small></div>
+      <div class="stat"><b id="aInv">$0</b><small>Confirmed deposits</small></div>
+      <div class="stat"><b id="aPend">0</b><small>Pending deposits</small></div>
+      <div class="stat"><b id="aNext">$0</b><small id="aNextD">Next payout run</small></div>
+    </div>
+
+    <div class="row"><h2>Deposit <span>approvals</span></h2>
+      <select id="filter" style="width:auto"><option value="">All</option><option>Pending</option><option>Confirmed</option><option>Rejected</option></select></div>
+    <div class="card tablewrap"><table><thead><tr><th>Date</th><th>Member</th><th>Network</th><th>Amount</th><th>TXID</th><th>Status</th><th></th></tr></thead><tbody id="depRows"></tbody></table></div>
+
+    <div class="row"><h2>Next payout <span>run</span></h2><button class="btn sm" id="csv"><i data-i="copy"></i> Export CSV</button></div>
+    <div class="card tablewrap"><table><thead><tr><th>Member</th><th>Email</th><th>Interest</th><th>Referral bonus</th><th>Total to pay</th></tr></thead><tbody id="payRows"></tbody></table></div>
+
+    <div class="row"><h2>Members</h2></div>
+    <div class="card tablewrap"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Nationality</th><th>Wallet</th><th>Code</th><th>Referred by</th><th>Confirmed</th><th>Joined</th></tr></thead><tbody id="memRows"></tbody></table></div>
+  </div>
+</div>
+
+<div id="ticker" data-tv="ticker"></div>
+<script src="assets/config.js"></script>
+<script src="assets/icons.js"></script>
+<script src="assets/fx.js"></script>
+<script src="assets/tv.js"></script>
+<script src="assets/api.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+#themeToggle{position:fixed;right:20px;bottom:68px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(76,201,240,.45);background:rgba(5,18,44,.85);color:#7fd4ff;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(8px);box-shadow:0 4px 20px rgba(0,0,0,.35);transition:.25s}
+#themeToggle:hover{transform:scale(1.1) rotate(15deg);box-shadow:0 0 22px rgba(76,201,240,.5)}
+#themeToggle svg{width:22px;height:22px}
+
+/* ===== LIGHT THEME ===== */
+html[data-theme=light]{--text:#0b1b34;--mute:#4a5d7a;--line:#c5d6ea;--cyan:#0a6fd6;--gold:#0b9c86;--violet:#2563eb;background:#eaf2fb url("bg.jpg") center/cover fixed no-repeat}
+html[data-theme=light] body::before{background:linear-gradient(90deg,rgba(240,247,255,.96) 0%,rgba(240,247,255,.84) 40%,rgba(240,247,255,.55) 75%,rgba(240,247,255,.6) 100%),linear-gradient(180deg,rgba(240,247,255,.6),transparent 25%,transparent 70%,rgba(240,247,255,.92))}
+html[data-theme=light] #bg{opacity:.3}
+html[data-theme=light] #themeToggle{background:rgba(255,255,255,.92);color:#0a6fd6;border-color:rgba(10,111,214,.4);box-shadow:0 4px 20px rgba(20,60,120,.2)}
+html[data-theme=light] .shell nav{background:rgba(255,255,255,.72);border-bottom-color:rgba(10,111,214,.18)}
+html[data-theme=light] .shell nav .pillnav{background:rgba(255,255,255,.7);border-color:rgba(10,111,214,.25)}
+html[data-theme=light] .shell nav .pillnav a,html[data-theme=light] nav .links a{color:#33486b}
+html[data-theme=light] nav .links a:hover{color:#0a6fd6}
+html[data-theme=light] .shell nav .links .btn,html[data-theme=light] nav .links .btn{color:#fff}
+html[data-theme=light] .logo{color:#0b1b34}
+html[data-theme=light] .logo .mark{color:#0a6fd6;filter:none}
+html[data-theme=light] .pilltag{background:rgba(255,255,255,.75);color:#0a4fa0;border-color:rgba(10,111,214,.4)}
+html[data-theme=light] .hero2 h1{color:#0b1b34}
+html[data-theme=light] .hero2 h1 em{background:linear-gradient(90deg,#0a6fd6,#0b9c86);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .hero2 p,html[data-theme=light] .trust{color:#3d516e}
+html[data-theme=light] .logos{color:#0b1b34}html[data-theme=light] .logos i{color:#0a6fd6}
+html[data-theme=light] .btn.ghost{color:#0b1b34;border-color:rgba(11,27,52,.35);background:rgba(255,255,255,.6)}
+html[data-theme=light] .btn.ghost:hover{background:rgba(255,255,255,.95)}
+html[data-theme=light] .glassbar{background:linear-gradient(rgba(10,111,214,.06) 1px,transparent 1px) 0 0/100% 28px,linear-gradient(90deg,rgba(10,111,214,.06) 1px,transparent 1px) 0 0/28px 100%,rgba(255,255,255,.72);border-color:rgba(10,111,214,.35);box-shadow:0 10px 50px rgba(20,60,120,.15)}
+html[data-theme=light] .glassbar small.t{color:#33486b}html[data-theme=light] .glassbar small.s{color:#5f7292}
+html[data-theme=light] .glassbar b{background:linear-gradient(#0b1b34,#0a6fd6);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .shell>section{background:rgba(255,255,255,.78)}
+html[data-theme=light] .shell>section:has(.glassbar),html[data-theme=light] .shell>section.reveal:first-of-type{background:transparent}
+html[data-theme=light] .card{background:rgba(255,255,255,.8);border-color:rgba(10,111,214,.2)}
+html[data-theme=light] .card.hv:hover{border-color:#0a6fd6;box-shadow:0 12px 40px rgba(20,60,120,.18)}
+html[data-theme=light] .card .ico{color:#0a6fd6}html[data-theme=light] .card .ico.g{color:#0b9c86}
+html[data-theme=light] .steps .card::before{color:rgba(10,111,214,.14)}
+html[data-theme=light] .stat b{color:#0a6fd6}
+html[data-theme=light] .rate{background:linear-gradient(90deg,#0a6fd6,#0b9c86);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .tvbox{background:rgba(255,255,255,.85)}
+html[data-theme=light] #ticker{background:rgba(255,255,255,.96);border-top-color:#0a6fd6;box-shadow:0 -4px 24px rgba(20,60,120,.12)}
+html[data-theme=light] .shell .note,html[data-theme=light] .note{background:rgba(255,255,255,.85);border-top-color:rgba(10,111,214,.15);color:#4a5d7a}
+html[data-theme=light] input,html[data-theme=light] select{background:#fff;color:#0b1b34;border-color:#c5d6ea}
+html[data-theme=light] .addr{background:#f2f8ff;color:#0a6fd6;border-color:#0a6fd6}
+html[data-theme=light] .banner{background:rgba(11,156,134,.1);color:#0b7a68;border-color:#0b9c86}
+html[data-theme=light] .msg{color:#0b7a68}
+html[data-theme=light] tr:hover td{background:rgba(10,111,214,.05)}
+html[data-theme=light] .pill.Confirmed{color:#0a6fd6;border-color:#0a6fd6}html[data-theme=light] .pill.Pending{color:#0b7a68;border-color:#0b9c86}
+html[data-theme=light] .tabs .on{color:#fff}
+
+/* dashboard */
+html[data-theme=light] body.dp{--ln:rgba(10,111,214,.18);--lime:#0b9c86}
+html[data-theme=light] body.dp .shell{background:rgba(255,255,255,.78);border-color:rgba(10,111,214,.2);box-shadow:0 30px 80px rgba(20,60,120,.18)}
+html[data-theme=light] .dp .panel{background:rgba(255,255,255,.88)}
+html[data-theme=light] .dp .panel.glass{background:linear-gradient(180deg,rgba(31,143,255,.14),rgba(255,255,255,.9))}
+html[data-theme=light] .dlogo,html[data-theme=light] .dhi{color:#0b1b34}html[data-theme=light] .dlogo .mark{color:#0a6fd6}
+html[data-theme=light] .dsearch,html[data-theme=light] .railgrp,html[data-theme=light] .rb.out,html[data-theme=light] .pills button{background:rgba(10,111,214,.1);color:#33486b}
+html[data-theme=light] .pills button.on{background:#0a6fd6;color:#fff}
+html[data-theme=light] .rb{color:#33486b}html[data-theme=light] .rb.on{background:#0a6fd6;color:#fff}
+html[data-theme=light] .dsearch input{background:transparent}
+html[data-theme=light] .va,html[data-theme=light] .dots,html[data-theme=light] .bar small,html[data-theme=light] .dc small,html[data-theme=light] .legend small,html[data-theme=light] .mrow small,html[data-theme=light] .txs li small,html[data-theme=light] .friend small,html[data-theme=light] .cardnum small,html[data-theme=light] .dsteps small,html[data-theme=light] .dp label,html[data-theme=light] .dp th,html[data-theme=light] .mut{color:#4a5d7a}
+html[data-theme=light] .bar .tip{background:#0b1b34;color:#fff}
+html[data-theme=light] .bar .col{background:repeating-linear-gradient(135deg,rgba(10,111,214,.8) 0 2px,transparent 2px 6px),rgba(10,111,214,.08);border-color:rgba(10,111,214,.35)}
+html[data-theme=light] .bar.hl .col{background:linear-gradient(180deg,#38a8ff,#0a6fd6)}
+html[data-theme=light] .txi{color:#0a6fd6}html[data-theme=light] .txi.out{color:#0b9c86}
+html[data-theme=light] .txs li b.pos{color:#0a6fd6}
+html[data-theme=light] .dp .stat b{color:#0a6fd6}
+html[data-theme=light] .dnote{color:#0b1b34}
+html[data-theme=light] .dp input,html[data-theme=light] .dp select{background:#fff}
+html[data-theme=light] .dp .addr{color:#0a6fd6}
+html[data-theme=light] .friend,html[data-theme=light] .spend{background:rgba(10,111,214,.07)}
+html[data-theme=light] .code{color:#0b9c86}
+html[data-theme=light] .cardnum{background:linear-gradient(rgba(31,143,255,.16),rgba(255,255,255,.4))}
+html[data-theme=light] .av{color:#fff;background:linear-gradient(135deg,#0a6fd6,#38a8ff)}
+@media(max-width:860px){html[data-theme=light] body::before{background:linear-gradient(180deg,rgba(240,247,255,.92),rgba(240,247,255,.82))}}
+html[data-theme=light] .dp .dsearch input{background:transparent;border:0}
+html[data-theme=light] .cs.c1,html[data-theme=light] .cs.c1 b,html[data-theme=light] .cs.c1 small{color:#fff}
+html[data-theme=light] .plus{color:#0a6fd6}
+
+/* light mode: featured AI card */
+html[data-theme=light] .shell #strategies .card.wide{background:linear-gradient(90deg,rgba(37,99,235,.10),rgba(11,156,134,.10)),rgba(255,255,255,.92);border-color:rgba(37,99,235,.35)}
