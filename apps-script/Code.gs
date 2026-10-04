@@ -11,6 +11,47 @@ const HEADERS = {
   Deposits: ['Id', 'Email', 'Amount', 'Network', 'TxId', 'Status', 'CreatedAt', 'ConfirmedAt']
 };
 
+function setup() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const mSh = sheet_('Members');
+  const dSh = sheet_('Deposits');
+  
+  [mSh, dSh].forEach(sh => {
+    const range = sh.getRange(1, 1, 1, sh.getLastColumn());
+    range.setBackground('#0b1b34')
+         .setFontColor('#ffffff')
+         .setFontWeight('bold');
+    sh.setFrozenRows(1);
+    for (let c = 1; c <= sh.getLastColumn(); c++) {
+      sh.autoResizeColumn(c);
+    }
+  });
+
+  const defaultSheet = ss.getSheetByName('Sheet1') || ss.getSheetByName('แผ่น1');
+  if (defaultSheet && ss.getSheets().length > 1) {
+    try { ss.deleteSheet(defaultSheet); } catch (e) {}
+  }
+  return { ok: true, message: 'iFlowBitt database initialized with Members and Deposits tables.' };
+}
+
+function onOpen() {
+  try {
+    SpreadsheetApp.getUi()
+      .createMenu('iFlowBitt')
+      .addItem('Initialize Database Tables', 'setup')
+      .addToUi();
+  } catch (e) {}
+}
+
+function doGet(e) {
+  try {
+    const res = setup();
+    return out_({ ok: true, status: 'iFlowBitt Backend Active', setup: res });
+  } catch (err) {
+    return out_({ ok: false, error: String(err) });
+  }
+}
+
 function sheet_(name) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sh = ss.getSheetByName(name);
